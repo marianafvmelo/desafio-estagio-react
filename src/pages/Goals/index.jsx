@@ -1,8 +1,10 @@
-import { Sidebar } from "../../components/Sidebar";
+import { FormRegister } from "../../components/FormRegister";
+import { FormContainer } from "../../components/FormRegister/styles";
 
 export function Goals() {
   return (
-    // <Sidebar />
-    <h1>ola</h1>
+    <form>
+      <FormRegister />
+    </form>
   )
 }

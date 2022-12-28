@@ -29,6 +29,4 @@ export const SidebarContainer = styled.div`
       }
     }
   }
-
-  
 `

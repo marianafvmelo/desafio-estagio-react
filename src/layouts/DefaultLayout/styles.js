@@ -11,10 +11,11 @@ export const ContentContainer = styled.div`
 `
 export const MainContainer = styled.div`
   background: ${((props) => props.theme.colors.lightGray)};
+  padding: 4rem;
   
   main {
     background: ${((props) => props.theme.colors.white)};
-    
+    height: 100%;
   }
 `
 
