@@ -24,8 +24,12 @@ export const SidebarContainer = styled.div`
 
       transition: box-shadow 0.3s ease;
 
-      &:hover, &.active {
+      &:hover {
         box-shadow: inset 3px 0 0 0 ${(props) => props.theme.colors.white}
+      }
+      
+      &.active {
+        box-shadow: inset 3px 0 0 0 ${(props) => props.theme.colors.lightBlue}
       }
     }
   }
