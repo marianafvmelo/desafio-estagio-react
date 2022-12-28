@@ -1,0 +1,23 @@
+/* eslint-disable prettier/prettier */
+import { Outlet } from "react-router-dom";
+import { Header } from "../../components/Header";
+import { LayoutContainer, ContentContainer, MainContainer } from "./styles";
+import React from "react";
+import { Sidebar } from "../../components/Sidebar";
+
+export function DefaultLayout() {
+  return (
+    <LayoutContainer>
+      <Header />
+
+      <ContentContainer>
+        <Sidebar />
+        <MainContainer>
+          <main>
+
+          </main>
+        </MainContainer>
+      </ContentContainer>
+    </LayoutContainer >
+  )
+}
