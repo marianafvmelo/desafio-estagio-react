@@ -1,5 +1,7 @@
+import { Registers } from "../../components/Registers";
+
 export function Areas() {
   return (
-    <h1>Areas</h1>
+    <Registers labelText="Áreas:" inputId="areas" placeholderText="Adicionar áreas" />
   )
 }

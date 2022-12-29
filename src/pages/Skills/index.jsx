@@ -1,5 +1,7 @@
+import { Registers } from "../../components/Registers";
+
 export function Skills() {
   return (
-    <h1>Skills</h1>
+    <Registers labelText="Habilidades:" inputId="skills" placeholderText="Adicionar habilidades" />
   )
 }

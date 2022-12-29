@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.div`
-  padding: 4.8rem;
+  padding: 4.8rem 4.8rem 1rem 4.8rem;
+  width: 60rem;
+  max-width: 90%;
 
   label {
     display: block;
@@ -15,23 +17,28 @@ export const FormContainer = styled.div`
 
     width: 2.4rem;
 
-    background: 0;
+    background: ${((props) => props.theme.colors.mediumBlue)};
     border: 1px solid ${((props) => props.theme.colors.mediumGray)};
 
     border-radius: 3px;
     
     cursor: pointer;
+
+    &:focus {
+      box-shadow: none;
+      border-color: ${(props) => props.theme.colors.mediumBlue};
+    }
   }
 `
-export const InputContainer = styled.div`
+export const AddRegisterContainer = styled.div`
   display: flex;
   gap: .2rem;
 `
 
-export const BaseInput = styled.input`
+export const InputAddRegister = styled.input`
   flex: 1;
   background: transparent;
-  height: 2.5rem;
+  height: 2.8rem;
 
   border: 1px solid ${((props) => props.theme.colors.mediumGray)};
   border-radius: 3px;
@@ -45,6 +52,17 @@ export const BaseInput = styled.input`
 
   &:focus {
     box-shadow: none;
-    border-color: ${(props) => props.theme['green-500']};
+    border-color: ${(props) => props.theme.colors.mediumBlue};
   }
+`
+export const BoxRegisters = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  gap: .4rem;
+
+  font-size: 1.4rem;
+
+  width: 60rem;
+  padding: 0 4.8rem 0 4.8rem;
 `

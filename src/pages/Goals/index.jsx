@@ -1,10 +1,7 @@
-import { FormRegister } from "../../components/FormRegister";
-import { FormContainer } from "../../components/FormRegister/styles";
+import { Registers } from "../../components/Registers";
 
 export function Goals() {
   return (
-    <form>
-      <FormRegister />
-    </form>
+    <Registers labelText="Metas:" inputId="goals" placeholderText="Adicionar metas" />
   )
 }

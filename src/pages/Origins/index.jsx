@@ -1,5 +1,7 @@
+import { Registers } from "../../components/Registers";
+
 export function Origins() {
   return (
-    <h1>Origins</h1>
+    <Registers labelText="Origens:" inputId="origins" placeholderText="Adicionar origens" />
   )
 }
