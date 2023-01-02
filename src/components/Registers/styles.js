@@ -19,41 +19,29 @@ export const FormContainer = styled.div`
 
     background: ${((props) => props.theme.colors.mediumBlue)};
     border: 1px solid ${((props) => props.theme.colors.mediumGray)};
-
-    border-radius: 3px;
     
-    cursor: pointer;
+    border-radius: 3px;    
+    
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    
+    &:not(:disabled):hover {
+      background: ${((props) => props.theme.colors.darkBlue)};
+      cursor: pointer;
+    }
 
-    &:focus {
+    &:not(:disabled):focus {
       box-shadow: none;
       border-color: ${(props) => props.theme.colors.mediumBlue};
     }
+
   }
 `
 export const AddRegisterContainer = styled.div`
   display: flex;
   gap: .2rem;
-`
-
-export const InputAddRegister = styled.input`
-  flex: 1;
-  background: transparent;
-  height: 2.8rem;
-
-  border: 1px solid ${((props) => props.theme.colors.mediumGray)};
-  border-radius: 3px;
-
-  font-size: 1.2rem;
-  padding: 0 0.5rem;
-
-  &::placeholder {
-    color: ${(props) => props.theme['gray-500']};
-  }
-
-  &:focus {
-    box-shadow: none;
-    border-color: ${(props) => props.theme.colors.mediumBlue};
-  }
 `
 export const BoxRegisters = styled.div`
   display: flex;
