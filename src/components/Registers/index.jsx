@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FormContainer, AddRegisterContainer, BoxRegisters } from "./styles";
-import { RegisterItem } from '../RegisterItem'
-import { RegisterInput } from "../RegisterInput";
+import { RegisterItem } from './Item'
+import { RegisterInput } from "./Input";
 import { Plus } from "phosphor-react";
 
 export function Registers({ labelText, placeholderText, inputId }) {
@@ -10,8 +10,8 @@ export function Registers({ labelText, placeholderText, inputId }) {
   const [registers, setRegisters] = useState([]);
 
   useEffect(() => {
-    if (localStorage.getItem('@desafio-estagio-react:registers-1.0.0')) {
-      const storedRegisters = JSON.parse(localStorage.getItem('@desafio-estagio-react:registers-1.0.0'));
+    if (localStorage.getItem(`@desafio-estagio-react:${inputId}-1.0.0`)) {
+      const storedRegisters = JSON.parse(localStorage.getItem(`@desafio-estagio-react:${inputId}-1.0.0`));
       setRegisters(storedRegisters);
     }
   }, []);
@@ -19,11 +19,10 @@ export function Registers({ labelText, placeholderText, inputId }) {
   const handleCreateRegister = (e) => {
     e.preventDefault();
     if (register) {
-      // const newRegister = (oldRegisters, i) => ([...oldRegisters, { id: i, title: register, isComplete: false }]);
       const newRegister = { id: new Date().getTime().toString(), title: register, isComplete: false };
 
       setRegisters([...registers, newRegister]);
-      localStorage.setItem('@desafio-estagio-react:registers-1.0.0', JSON.stringify([...registers, newRegister]));
+      localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify([...registers, newRegister]));
       setRegister('');
     }
   }
@@ -36,14 +35,14 @@ export function Registers({ labelText, placeholderText, inputId }) {
     const registerWithoutDeletedOne = registers.filter(register => register.id !== id);
 
     setRegisters(registerWithoutDeletedOne)
-    localStorage.setItem('@desafio-estagio-react:registers-1.0.0', JSON.stringify(registerWithoutDeletedOne));
+    localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(registerWithoutDeletedOne));
   }
 
   const handleRegisterCompletion = (id) => {
     const completedRegister = registers.map(oldRegisters => oldRegisters.id === id ? { ...oldRegisters, isComplete: !oldRegisters.isComplete } : { ...oldRegisters });
 
     setRegisters(completedRegister);
-    localStorage.setItem('@desafio-estagio-react:registers-1.0.0', JSON.stringify(completedRegister));
+    localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(completedRegister));
   }
 
   const isNewRegisterEmpty = register.length === 0;

@@ -3,10 +3,10 @@ import styled from "styled-components"
 export const BoxRegister = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center ;
+
   gap: 2.4rem;
 
-  padding: .8rem;
+  padding: .6rem;
 
   font-size: 1.2rem;
 
@@ -16,6 +16,7 @@ export const BoxRegister = styled.div`
 
   span {
     flex: 1;
+    align-self: center;
   }
 
   button {
