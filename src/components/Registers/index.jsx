@@ -45,7 +45,7 @@ export function Registers({ labelText, placeholderText, inputId }) {
     localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(completedRegister));
   }
 
-  const isNewRegisterEmpty = register.length === 0;
+  const isNewRegisterEmpty = register.trim().length === 0;
 
   return (
     <section>

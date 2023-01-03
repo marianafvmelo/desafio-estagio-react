@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FormContainer = styled.div`
-  padding: 4.8rem 4.8rem 1rem 4.8rem;
+  padding: 4.8rem 4.8rem .6rem 4.8rem;
   width: 60rem;
   max-width: 90%;
 
