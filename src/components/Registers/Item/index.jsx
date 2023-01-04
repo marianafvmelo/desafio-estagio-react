@@ -1,14 +1,19 @@
-import { BoxRegister } from "./styles"
-import { Trash } from "phosphor-react"
+import { ListItem, Actions, ButtonEdit, ButtonDelete } from "./styles"
+import { Pencil, Trash } from "phosphor-react"
 
-export function RegisterItem({ register, content, onDeleteRegister, handleRegisterCompletion }) {
+export function RegisterItem({ register, content, onEditClick, onDeleteRegister, handleRegisterCompletion, hasCompletion = false }) {
   return (
-    <BoxRegister>
-      <input type="checkbox" title="Marcar tarefa como concluída" defaultChecked={register.isComplete} onClick={() => handleRegisterCompletion(register.id)} />
+    <ListItem>
+      {hasCompletion ? <input type="checkbox" title="Marcar tarefa como concluída" defaultChecked={register.isComplete} onClick={() => handleRegisterCompletion(register.id)} /> : ''}
       <span>{content}</span>
-      <button onClick={() => onDeleteRegister(register.id)} title="Deletar tarefa">
-        <Trash size={16} ></Trash>
-      </button>
-    </BoxRegister>
+      <Actions>
+        <ButtonEdit /*onClick={() => onEditClick(register)}*/>
+          <Pencil size={16} />
+        </ButtonEdit>
+        <ButtonDelete onClick={() => onDeleteRegister(register.id)} title="Deletar tarefa">
+          <Trash size={16} />
+        </ButtonDelete>
+      </Actions>
+    </ListItem>
   )
 }

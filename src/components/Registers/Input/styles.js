@@ -17,6 +17,6 @@ export const Input = styled.input`
 
   &:focus {
     box-shadow: none;
-    border-color: ${(props) => props.theme.colors.mediumBlue};
+    border-color: ${(props) => props.theme.colors.darkBlue};
   }
 `

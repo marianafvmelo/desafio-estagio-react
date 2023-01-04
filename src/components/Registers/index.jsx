@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { FormContainer, AddRegisterContainer, BoxRegisters } from "./styles";
+import { MainContent, FormContainer, AddRegisterContainer, List } from "./styles";
 import { RegisterItem } from './Item'
 import { RegisterInput } from "./Input";
 import { Plus } from "phosphor-react";
 
-export function Registers({ labelText, placeholderText, inputId }) {
+export function Registers({ labelText, placeholderText, inputId, hasCompletion }) {
 
   const [register, setRegister] = useState('');
   const [registers, setRegisters] = useState([]);
@@ -48,7 +48,7 @@ export function Registers({ labelText, placeholderText, inputId }) {
   const isNewRegisterEmpty = register.trim().length === 0;
 
   return (
-    <section>
+    <MainContent>
       <form onSubmit={handleCreateRegister}>
         <FormContainer>
           <label htmlFor={inputId}>{labelText}</label>
@@ -66,17 +66,18 @@ export function Registers({ labelText, placeholderText, inputId }) {
           </AddRegisterContainer>
         </FormContainer>
       </form>
-      <BoxRegisters>
+      <List>
         {registers.map(register => {
           return <RegisterItem
             key={register.id}
             content={register.title}
             register={register}
+            hasCompletion={hasCompletion}
             onDeleteRegister={deleteRegister}
             handleRegisterCompletion={handleRegisterCompletion}
           />
         })}
-      </BoxRegisters>
-    </section>
+      </List>
+    </MainContent >
   )
 }
