@@ -23,6 +23,10 @@ export const ListItem = styled.li`
     text-decoration: line-through;
   }
 
+  input[type="checkbox"]:checked ~ button {
+    text-decoration: line-through;
+  }
+
   span {
     flex: 1;
     text-align: justify;
