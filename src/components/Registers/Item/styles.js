@@ -61,5 +61,15 @@ export const ButtonDelete = styled(Button)`
       color: ${((props) => props.theme.colors.danger)};
     }
 `
+export const ButtonSave = styled(Button)`
+  &:hover{
+    color: ${((props) => props.theme.colors.success)};
+  }
+  `
+export const ButtonCancel = styled(Button)`
+   &:hover{
+      color: ${((props) => props.theme.colors.danger)};
+    }
+`
 
 

@@ -17,7 +17,9 @@ export const theme = {
     darkGray: '#808080',
 
 
+    success: '#5CB85C',
     danger: '#FF0000',
+    default: '#F7F7F7',
   },
 }
 
