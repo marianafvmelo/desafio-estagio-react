@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
+
 import { MainContent, FormContainer, AddRegisterContainer, List } from "./styles";
+
 import { RegisterItem } from './Item'
 import { RegisterInput } from "./Input";
+
 import { Plus } from "phosphor-react";
 
-export function Registers({ labelText, placeholderText, inputId, hasCompletion }) {
+export function Registers({
+  labelText,
+  placeholderText,
+  inputId,
+  hasCompletion
+}) {
 
   const [register, setRegister] = useState('');
   const [registers, setRegisters] = useState([]);
@@ -18,10 +26,15 @@ export function Registers({ labelText, placeholderText, inputId, hasCompletion }
     }
   }, []);
 
-  const handleCreateRegister = (e) => {
-    e.preventDefault();
+  const handleCreateRegister = (event) => {
+    event.preventDefault();
+
     if (register) {
-      const newRegister = { id: new Date().getTime().toString(), title: register, isComplete: false };
+      const newRegister = {
+        id: new Date().getTime().toString(),
+        title: register,
+        isComplete: false
+      };
 
       setRegisters([...registers, newRegister]);
       localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify([...registers, newRegister]));
@@ -29,37 +42,31 @@ export function Registers({ labelText, placeholderText, inputId, hasCompletion }
     }
   }
 
-  const handleRegisterChange = (e) => {
-    setRegister(e.target.value);
+  const handleRegisterChange = (event) => {
+    setRegister(event.target.value);
   }
 
   const deleteRegister = (id) => {
-    const registerWithoutDeletedOne = registers.filter(register => register.id !== id);
+    const registersWithoutDeletedOne = registers.filter((register) => register.id !== id);
 
-    setRegisters(registerWithoutDeletedOne)
-    localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(registerWithoutDeletedOne));
+    setRegisters(registersWithoutDeletedOne)
+    localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(registersWithoutDeletedOne));
   }
 
 
   const handleSubmitEditedRegister = (id) => {
-    const index = registers.findIndex(reg => reg.id === id);
+    const index = registers.findIndex((register) => register.id === id);
 
-    const newArray = [...registers];
+    const newRegistersArray = [...registers];
 
-    newArray[index].title = editedRegister;
-    setRegisters(() => newArray);
-    localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(newArray));
+    newRegistersArray[index].title = editedRegister;
 
-  }
-  console.log(registers);
-
-  const handleCancelEdit = () => {
-    setIsEditing(false);
-    setRegister('');
+    setRegisters(() => newRegistersArray);
+    localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(newRegistersArray));
   }
 
   const handleRegisterCompletion = (id) => {
-    const completedRegister = registers.map(previousRegisters => previousRegisters.id === id ? { ...previousRegisters, isComplete: !previousRegisters.isComplete } : { ...previousRegisters });
+    const completedRegister = registers.map((previousRegisters) => previousRegisters.id === id ? { ...previousRegisters, isComplete: !previousRegisters.isComplete } : { ...previousRegisters });
 
     setRegisters(completedRegister);
     localStorage.setItem(`@desafio-estagio-react:${inputId}-1.0.0`, JSON.stringify(completedRegister));
@@ -88,20 +95,22 @@ export function Registers({ labelText, placeholderText, inputId, hasCompletion }
       </form>
 
       <List>
-        {registers.map(register => {
-          return <RegisterItem
-            key={register.id}
-            content={register.title}
-            register={register}
-            hasCompletion={hasCompletion}
-            onDeleteRegister={deleteRegister}
-            handleRegisterCompletion={handleRegisterCompletion}
-            selectedId={selectedId}
-            setSelectedId={setSelectedId}
-            editedRegister={editedRegister}
-            setEditedRegister={setEditedRegister}
-            onHandleSubmitEditedRegister={handleSubmitEditedRegister}
-          />
+        {registers.map((register) => {
+          return (
+            <RegisterItem
+              key={register.id}
+              content={register.title}
+              register={register}
+              hasCompletion={hasCompletion}
+              onDeleteRegister={deleteRegister}
+              handleRegisterCompletion={handleRegisterCompletion}
+              selectedId={selectedId}
+              setSelectedId={setSelectedId}
+              editedRegister={editedRegister}
+              setEditedRegister={setEditedRegister}
+              onHandleSubmitEditedRegister={handleSubmitEditedRegister}
+            />
+          )
         })}
       </List>
     </MainContent >

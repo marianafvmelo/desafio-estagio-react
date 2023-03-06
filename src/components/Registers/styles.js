@@ -46,11 +46,6 @@ export const FormContainer = styled.div`
     
     border-radius: 3px;    
     
-    &:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-    }
-    
     &:not(:disabled):hover {
       background: ${((props) => props.theme.colors.darkBlue)};
       cursor: pointer;
@@ -60,7 +55,6 @@ export const FormContainer = styled.div`
       box-shadow: none;
       border-color: ${(props) => props.theme.colors.darkBlue};
     }
-
   }
 `
 export const AddRegisterContainer = styled.div`

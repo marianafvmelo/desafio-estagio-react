@@ -1,4 +1,13 @@
-import { ListItem, Actions, ButtonEdit, ButtonDelete, ButtonSave, ButtonCancel } from "./styles"
+import {
+  ListItem,
+  Actions,
+  ButtonEdit,
+  ButtonDelete,
+  ButtonSave,
+  ButtonCancel,
+  EditInput
+} from "./styles"
+
 import { Pencil, Trash, X, Check } from "phosphor-react"
 
 export function RegisterItem({
@@ -17,15 +26,8 @@ export function RegisterItem({
   return (
     selectedId === register.id ?
       <ListItem>
-        {hasCompletion ?
-          <input
-            type="checkbox"
-            title="Marcar tarefa como concluída"
-            defaultChecked={register.isComplete}
-            onClick={() => handleRegisterCompletion(register.id)}
-          />
-          : ''}
-        <input
+        <EditInput
+          autoFocus
           type="text"
           value={editedRegister}
           onChange={(event) => setEditedRegister(event.target.value)}
@@ -51,7 +53,7 @@ export function RegisterItem({
         {hasCompletion ?
           <input
             type="checkbox"
-            title="Marcar tarefa como concluída"
+            title={register.isComplete ? "Marcar como pendente" : "Marcar como concluída"}
             defaultChecked={register.isComplete}
             onClick={() => handleRegisterCompletion(register.id)}
           /> : ''}
@@ -59,19 +61,22 @@ export function RegisterItem({
         <Actions>
           <ButtonEdit
             onClick={() => {
-              setEditedRegister(content)
-              setSelectedId(register.id)
+              setEditedRegister(content);
+              setSelectedId(register.id);
             }}
-            title="Editar">
+            title="Editar"
+            disabled={register.isComplete}
+          >
             <Pencil size={16} />
           </ButtonEdit>
           <ButtonDelete
             onClick={() => onDeleteRegister(register.id)}
-            title="Deletar">
+            title="Deletar"
+            disabled={register.isComplete}
+          >
             <Trash size={16} />
           </ButtonDelete>
         </Actions>
       </ListItem>
-
-  )
+  );
 }

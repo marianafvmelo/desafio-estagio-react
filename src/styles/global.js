@@ -16,6 +16,11 @@ export const GlobalStyle = createGlobalStyle`
     box-shadow: 0 0 0 1px ${((props) => props.theme.colors.mediumBlue)};
   }
 
+  :disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
   body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -26,4 +31,5 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-size: 1.6rem;
   }
+
 `

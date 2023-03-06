@@ -1,6 +1,12 @@
 import { Input } from "./styles"
 
-export function RegisterInput({ type, inputId, value, placeholderText, onHandleRegisterChange }) {
+export function RegisterInput({
+  type,
+  inputId,
+  value,
+  placeholderText,
+  onHandleRegisterChange
+}) {
   return (
     <Input
       type={type}
@@ -9,5 +15,5 @@ export function RegisterInput({ type, inputId, value, placeholderText, onHandleR
       placeholder={placeholderText}
       onChange={onHandleRegisterChange}
     />
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const ListItem = styled.li`
   display: flex;
@@ -23,14 +23,11 @@ export const ListItem = styled.li`
     text-decoration: line-through;
   }
 
-  input[type="checkbox"]:checked ~ button {
-    text-decoration: line-through;
-  }
-
   span {
     flex: 1;
     text-align: justify;
   }
+
 `
 export const Actions = styled.div`
   display: flex;
@@ -46,21 +43,32 @@ export const Button = styled.button`
     border: 0;
     border-radius: 1px;
 
-    &:hover{
+    &:not(:disabled):hover{
        backdrop-filter: brightness(95%);
        cursor: pointer;
      }
 `
 export const ButtonEdit = styled(Button)`
-   &:hover{
+   &:not(:disabled):hover {
       color: ${((props) => props.theme.colors.mediumBlue)};
     }
 `
 export const ButtonDelete = styled(Button)`
-   &:hover{
+   &:not(:disabled):hover {
       color: ${((props) => props.theme.colors.danger)};
     }
 `
+export const EditInput = styled.input`
+   flex: 1;
+    border: none;
+
+    font-size:1.2rem;
+
+    &:focus {
+      box-shadow: none;
+    }
+`
+
 export const ButtonSave = styled(Button)`
   &:hover{
     color: ${((props) => props.theme.colors.success)};

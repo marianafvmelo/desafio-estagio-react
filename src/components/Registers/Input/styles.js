@@ -14,9 +14,4 @@ export const Input = styled.input`
   &::placeholder {
     color: ${(props) => props.theme['gray-500']};
   }
-
-  &:focus {
-    box-shadow: none;
-    border-color: ${(props) => props.theme.colors.darkBlue};
-  }
 `
